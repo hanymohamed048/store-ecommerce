@@ -20,6 +20,7 @@ Route::group(
     ], function(){
         Route::group(['middleware' => 'auth:admin','namespace'=>'Dashboard','prefix'=>'admin'], function () {
             Route::get('/','DashboardController@index')->name('admin.dashboard');
+            Route::get('logout', 'DashboardController@logt')->name('admin.logout');
             Route::group(['prefix' => 'settings'], function () {
                 Route::get('shipping-methods/{type}', 'SettingsController@editshipping')->name('edit.shipping.method');
                 Route::put('shipping-methods/{id}', 'SettingsController@updateshipping')->name('update.shipping.method');
