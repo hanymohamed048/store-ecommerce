@@ -9,7 +9,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="">الرئيسية </a>
                             </li>
-                            <li class="breadcrumb-item active"> وسائل التوصيل
+                            <li class="breadcrumb-item active">   {{ __('admin/sidebar.edit profile')}}
                             </li>
                         </ol>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="basic-layout-form"> تعديل  وسيله توصيل </h4>
+                                <h4 class="card-title" id="basic-layout-form">  {{ __('admin/sidebar.edit profile')}} </h4>
                                 <a class="heading-elements-toggle"><i
                                         class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
@@ -39,7 +39,7 @@
                             @include('dashboard.includes.alerts.errors')
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form" action="{{route('update.shipping.method',$data->id)}}"
+                                    <form class="form" action="{{route('update.profile')}}"
                                           method="post"
                                           enctype="multipart/form-data">
                                         @csrf
@@ -49,12 +49,12 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1"> الاسم </label>
-                                                        <input type="text" value="{{$data->value}}" id="name"
+                                                        <label for="projectinput1"> {{ __('admin/sidebar.name')}} </label>
+                                                        <input type="text" value="{{$data->name}}" id="name"
                                                                class="form-control"
                                                                placeholder="  "
-                                                               name="value">
-                                                        @error("value")
+                                                               name="name">
+                                                        @error("name")
                                                         <span class="text-danger">{{$message}}</span>
                                                         @enderror
                                                     </div>
@@ -62,13 +62,42 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput2">قيمه التوصيل</label>
+                                                        <label for="projectinput2">{{ __('admin/sidebar.email')}}</label>
                                                         <input type="text"  id="name1"
                                                                class="form-control"
                                                                placeholder="  "
-                                                               name="plain_value"
-                                                               value="{{$data->plain_value}}">
-                                                        @error("plain_value")
+                                                               name="email"
+                                                               value="{{$data->email}}">
+                                                        @error("email")
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1"> {{ __('admin/sidebar.password')}} </label>
+                                                        <input type="password" value="" id="name"
+                                                               class="form-control"
+                                                               placeholder="  "
+                                                               name="password">
+                                                        @error("password")
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput2">{{ __('admin/sidebar.password confirmation')}}</label>
+                                                        <input type="password"  id="name1"
+                                                               class="form-control"
+                                                               placeholder="  "
+                                                               name="password_confirmation"
+                                                               value="">
+                                                        @error("password_confirmation")
                                                         <span class="text-danger">{{$message}}</span>
                                                         @enderror
 
@@ -80,10 +109,6 @@
                                         </div>
 
                                         <div class="form-actions">
-                                            <button type="button" class="btn btn-warning mr-1"
-                                                    onclick="history.back();">
-                                                <i class="ft-x"></i> {{__('admin/sidebar.shipping-back')}}
-                                            </button>
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="la la-check-square-o"></i> {{__('admin/sidebar.shipping-save')}}
                                             </button>

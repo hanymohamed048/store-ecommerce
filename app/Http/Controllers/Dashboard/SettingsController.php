@@ -26,8 +26,8 @@ class SettingsController extends Controller
     public function updateshipping(ShipingRequest $request,$id){
 
             $shipping_method=Setting::find($id);
-            $shipping_method->update(['value'=>$request->plain_value]);
-            $shipping_method->plain_value =$request->value;
+            $shipping_method->update(['plain_value'=>$request->plain_value]);
+            $shipping_method->value =$request->value;
             $shipping_method->save();
 
             return redirect()->back()->with(['success'=>__('admin/sidebar.success')]);
